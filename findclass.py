@@ -1,8 +1,11 @@
-def findclass(type_or_string,module_string=None):
+def findclass(type_or_string,module_string=None,context=None):
         typeVar = type_or_string
         if isinstance(type_or_string, str):
             if module_string == None:
-                typeVar = globals()[type_or_string]
+                if context:
+                    typeVar = context[type_or_string]
+                else:
+                    typeVar = globals()[type_or_string]
             else:
                 import importlib
                 moduleIn = importlib.import_module(module_string)
