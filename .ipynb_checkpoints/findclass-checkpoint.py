@@ -2,11 +2,14 @@ def findclass(type_or_string,module_string=None,context=None):
         typeVar = type_or_string
         if isinstance(type_or_string, str):
             if module_string == None:
+                #print("ATTEMPTING LOOKUP")
                 if context:
                     typeVar = context[type_or_string]
                 else:
                     typeVar = globals()[type_or_string]
+                #print("FINISHED LOOKUP" + str(typevar))
             else:
+                #print("ATTEMPTING IMPORT")
                 import importlib
                 moduleIn = importlib.import_module(module_string)
                 importlib.reload(moduleIn)
