@@ -9,6 +9,8 @@ def findclass(type_or_string,module_string=None,context=None):
                     else:
                         typeVar = globals()[type_or_string]
                 except:
+                    import traceback as tb
+                    tb.print_exc()
                     raise Exception("Could not load class "+str(type_or_string))
                 #print("FINISHED LOOKUP" + str(typevar))
             else:
